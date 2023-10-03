@@ -26,6 +26,14 @@ class MainActivity : AppCompatActivity() {
             // TODO Step2: Implement lambda body to launch new activity and pass value
             adapter = TextSizeAdapter(textSizes){ selectedTextSize ->
 
+                // Create an intent to launch the DisplayActivity
+                val intent = Intent(this@MainActivity, DisplayActivity::class.java)
+
+                // Put the selected text size as an extra in the intent
+                intent.putExtra("SELECTED_TEXT_SIZE", selectedTextSize)
+
+                // Start the DisplayActivity
+                startActivity(intent)
             }
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
