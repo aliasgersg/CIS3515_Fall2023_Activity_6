@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this@MainActivity, DisplayActivity::class.java)
 
                 // Put the selected text size as an extra in the intent
-                intent.putExtra("SELECTED_TEXT_SIZE", selectedTextSize)
+                intent.putExtra(sizeText, selectedTextSize.toFloat())
 
                 // Start the DisplayActivity
                 startActivity(intent)
@@ -52,7 +52,7 @@ class TextSizeAdapter (private val textSizes: Array<Int>, val callback: (Int)->U
         init {
             textView.setOnClickListener {
                 // Get the selected text size
-                val selectedTextSize = textView.text.toString().toInt()
+                val selectedTextSize = textSizes[adapterPosition]
                 // TODO Step 1: Return the selected text size
                 callback(selectedTextSize)
             }
